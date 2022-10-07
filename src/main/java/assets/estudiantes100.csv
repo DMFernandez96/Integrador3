@@ -1,0 +1,101 @@
+id_estudiante,dni,nrolibreta,nombre,apellido,edad,genero,ciudad
+1,15033773,793897,Witty,Jorn,61,f,Bealanana
+2,17485450,732612,Hobard,Bimson,40,f,Umeå
+3,21914201,537361,Franchot,Regus,55,f,Citeureup
+4,21267060,166483,Brian,Arnoldi,46,f,Daixi
+5,26639249,159039,Frasco,Buye,42,f,Uliastay
+6,26380580,629405,Cheslie,Climpson,59,f,Muricay
+7,23147877,371873,Gerhardine,Androsik,23,f,Manakara
+8,51021732,447521,Issie,Ferron,56,f,Urrao
+9,35589525,011148,Mariele,Panks,25,f,Dongdu
+10,55861993,456183,Ashlie,McGarry,57,f,Lagyná
+11,40077896,822114,Marcellina,Hane,19,f,Sekolan
+12,98979184,450308,Misty,Knightly,45,f,Reims
+13,56708913,792816,Chaim,Pavey,20,f,Jejkowice
+14,69578180,284502,Kathie,Essam,29,f,Bang Nam Priao
+15,22589401,369853,Ashton,Fuzzens,20,f,Odolena Voda
+16,62418339,117608,Harvey,Hadcroft,39,f,Ovidiopol’
+17,57861381,342811,Cassandre,Jerrom,41,f,Udon Thani
+18,04019656,757882,Tiffany,Lavers,18,f,Ban Lam Luk Ka
+19,41381108,201862,Marlow,Raffan,25,f,Bukbatang
+20,41077910,019434,Lilllie,Balkwill,62,f,Aracaju
+21,27755081,847407,Wolf,O'Connel,56,f,Ngetkib
+22,03265768,934293,Laurens,Grafton,36,f,Jonquière
+23,25255473,438093,Layton,Olohan,58,f,Lemenhe
+24,36641915,785587,Trixy,Chadney,59,f,Centurion
+25,05306061,671399,Dulsea,Meininking,41,f,Balut
+26,47080883,409107,Mitch,Bridgewater,46,f,Balboa
+27,82996293,546416,Adelaida,Seckom,27,f,Zubin Potok
+28,56934379,298520,Myrwyn,Lording,58,f,Fuyo
+29,04163919,262033,Valerie,Richens,34,f,Lago
+30,55734916,978687,Sileas,Velde,46,f,Florida
+31,68505990,623317,Anne-marie,Polsin,58,f,Al Jaghbūb
+32,08920319,523925,Trent,Scruton,46,f,Kalinovo
+33,30717551,982288,Sondra,Gerritsma,55,f,Ilmajoki
+34,62751895,382785,Rockie,Hellard,57,f,Sipe Sipe
+35,90295237,475864,Osborne,Carolan,61,f,Xiaojia
+36,75989894,626394,Francisca,Bowry,56,f,Tallahassee
+37,79087825,487410,Nelie,Lethbrig,33,f,Lenningen
+38,34394953,908584,Zenia,Holsey,53,f,Kuala Terengganu
+39,56783900,954825,Rouvin,Ghilardi,18,f,Cihambali
+40,43599745,938529,Molli,Gonzalvo,28,f,Šenkovec
+41,60138798,086813,Dyanna,Schuchmacher,22,f,Köyliö
+42,24318985,795052,Kathryne,Cruwys,35,f,Yangqiaodian
+43,33428696,119079,Jenifer,Silwood,43,f,Feilaixia
+44,18259413,619713,Cad,Ottosen,26,f,Rožďalovice
+45,47785763,415768,Derwin,Sailor,25,f,Swedru
+46,63835146,100751,Octavius,Gaize,22,f,Zebrzydowice
+47,43216243,280964,Avis,Caltun,49,f,Kandi
+48,98391933,326455,Gregor,Peotz,31,f,Shar
+49,85250013,630728,Maxwell,McQuie,24,f,Casa Branca
+50,62475470,719403,Linda,Speddin,30,f,Prado
+51,40460279,014735,Darin,Matteris,24,f,Pacucha
+52,59888935,393770,Chickie,Crockley,24,f,Ban Mai
+53,03455019,544173,Hilly,McDougald,20,f,Revelstoke
+54,35193954,411047,Clarance,Henniger,44,f,Ordzhonikidzevskaya
+55,69838297,768709,Pavla,Goneau,37,f,Cacoal
+56,78579335,463997,Clare,Nussii,19,f,Somita
+57,72632061,082449,Duane,Blumire,34,f,Szydłowo
+58,91619456,829471,Adam,Daventry,32,f,Aizkraukle
+59,88466870,354905,Pembroke,Cuncarr,34,f,Cabanbanan
+60,28678465,890687,Tabatha,Instone,21,f,Batangtoru
+61,68244427,857279,Julie,Giacobillo,41,f,West Jerusalem
+62,17198130,939842,Valentina,Cuxson,49,f,Além do Rio
+63,73926217,360332,Chrystal,Foster,18,f,Buffalo
+64,53506337,442265,Gabriell,Bolletti,56,f,Hongshi
+65,47375209,290034,Stepha,Reynalds,59,f,Agbor
+66,95043948,745296,Hart,Millington,30,f,Castanhal
+67,37270917,365463,Vaclav,Shaylor,18,f,Dungarvan
+68,97890210,906572,Keen,Allward,37,f,Bitobe
+69,25753635,250933,Corbett,Roberto,30,f,Strasbourg
+70,53085006,164310,Christina,Leidl,43,f,Parumaan
+71,41001400,294559,Jamima,McOwen,23,f,Santa Catalina
+72,05615107,856413,Birgitta,Trazzi,52,f,Göteborg
+73,10278604,083338,Hamel,Jakovijevic,41,f,Xuebu
+74,04955890,433155,Rikki,Eddie,54,f,Marcq-en-Barœul
+75,02981955,295114,Merle,Gerardeaux,31,f,Flin Flon
+76,09236909,208106,Shandee,Disdel,24,f,Yuetang
+77,99512742,401491,Roobbie,Gingle,27,f,Beausejour
+78,12546989,841368,Darbie,Kimmins,31,f,Jiaoqi
+79,46071629,680429,Retha,Lanfere,54,f,Kostanay
+80,00089487,189495,Patrice,Shanahan,27,f,Likupang
+81,48366805,037834,Moise,Peddel,45,f,Nejo
+82,59016321,645635,Quinn,Berling,28,f,Nizhnyaya Omka
+83,33279563,180468,Silvain,Fidgeon,33,f,El Aguacate
+84,32024544,712043,Graig,O' Sullivan,60,f,Ganxi
+85,16494711,203922,Ludwig,Bimrose,51,f,Vénissieux
+86,89803627,085609,Gwenore,Peter,35,f,Rio das Ostras
+87,18512314,969683,Geoffrey,Sheerman,34,f,Lantapan
+88,43664537,121937,Lemmie,Rushmare,32,f,Douane
+89,57753563,576144,Robinetta,Josephs,28,f,Sankui
+90,34806907,912336,Shari,Sparshott,48,f,Mugan
+91,14356250,458768,Nathanael,Marjoram,45,f,Xiluo
+92,42153292,775396,Hilde,Hilland,18,f,Bianba
+93,96721836,778133,Malanie,Wann,58,f,Aimin
+94,71889160,087954,Babbette,Quene,51,f,Claremont
+95,17267826,748209,Antonina,Gurnee,23,f,São Pedro
+96,18991660,767185,Donnell,Pass,40,f,Hirara
+97,59719399,981984,Fleur,Huccaby,47,f,Sandakan
+98,26294926,439319,Melosa,Le Clercq,40,f,Mandráki
+99,40189934,669034,Hayes,Takis,18,f,Blawi
+100,11976633,936686,Josephine,Nilges,35,f,Bokhan
