@@ -1,12 +1,16 @@
 package Servicios;
 
+import Model.Carrera;
 import Model.Estudiante;
+import Model.Matriculacion;
 import Repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.List;
+import java.util.Random;
 
 @Service
 public class ServicioEstudianteImpl implements ServicioEstudiante{
@@ -52,5 +56,7 @@ public class ServicioEstudianteImpl implements ServicioEstudiante{
 	public Estudiante getEstudiantePorNroLibreta(int lu) {
 		return er.getEstudiantePorNroLibreta(lu);
 	}
+
+
 
 }

@@ -39,9 +39,19 @@ public class ServicioCarreraImpl implements ServicioCarrera{
 		cr.deleteById(id);
 	}
 	
-	public boolean actualizarCarrera(Carrera c) {
-		return cr.actualizarCarrera(c);
+	public Carrera actualizarCarrera(Carrera newCarrera) {
+			return cr.findById(newCarrera.getId_carrera())
+					.map(oldCarrera -> {
+						oldCarrera.setNombre(newCarrera.getNombre());
+						oldCarrera.setDuracion(newCarrera.getDuracion());
+						oldCarrera.setMatriculaciones(newCarrera.getMatriculaciones());
+						return cr.save(oldCarrera);
+					})
+					.orElseGet(() -> {
+						return cr.save(newCarrera);
+					});
 	}
+
 
 	@Override
 	public List<Carrera> getCarrerasConEstudiantes() {

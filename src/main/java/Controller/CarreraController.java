@@ -3,6 +3,7 @@ package Controller;
 import DTO.CarreraDTO;
 import Model.Carrera;
 import Servicios.ServicioCarrera;
+import Servicios.ServicioCarreraImpl;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
@@ -22,26 +23,21 @@ import static java.lang.Integer.parseInt;
 @RestController
 @RequestMapping("/carreras")
 public class CarreraController {
-	public CarreraController(@Qualifier("servicioCarrera") ServicioCarrera sc) {
+	public CarreraController(@Qualifier("servicioCarrera") ServicioCarreraImpl sc) {
 		this.sc = sc;
 	}
 
-	@Qualifier("servicioCarrera")
+	@Qualifier("servicioCarreraImpl")
 	@Autowired
-	private ServicioCarrera sc;
+	private ServicioCarreraImpl sc;
 
 	@PostMapping(value="/insertar" )
 	public void insertarCarrera(@RequestBody Carrera c) {this.sc.insertarCarrera(c);}
 
 	@RequestMapping(value="/actualizar" )
 	public boolean actualizarCarrera(@RequestBody Carrera c) {
-		if (this.sc.actualizarCarrera(c)) {
-			return true;
-		} 
-//		else if (this.insertarCarrera(c)) {
-//			return true;
-//		};
-		return false;
+		this.sc.actualizarCarrera(c);
+		return true;
 	};
 	
 	@DeleteMapping(value = "/eliminar/{id}")
@@ -69,26 +65,5 @@ public class CarreraController {
 		return this.sc.getReporteCarreras();
 	}
 
-	public List<Carrera> leerCarreras(){
-		List<Carrera> car = new ArrayList<>();
-		try {
-			@SuppressWarnings("deprecation")
-			CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/assets/carreras20.csv"));
-			System.out.println("Estoy cargando las carreras...");
-			for(CSVRecord row: parser) {
-				Carrera tmp = new Carrera(row.get("nombre"),parseInt(row.get("duracion")));
-				car.add(tmp);
-			}
-			System.out.println("No se me da nada mal");
-			return car;
 
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return car;
-	}
 }

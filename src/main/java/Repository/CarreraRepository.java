@@ -32,4 +32,5 @@ public interface CarreraRepository extends JpaRepository<Carrera,Long> {
 			+ "ORDER BY c.nombre ASC ")
 	public List<Carrera> getCarrerasOrdenadoNombre();
 
+
 }

@@ -11,7 +11,7 @@ public interface ServicioCarrera {
 	public void insertarCarrera(Carrera c);
 	public List<Carrera> listarCarreras();
 	public void eliminarCarrera(Long id);
-	public boolean actualizarCarrera(Carrera c);
+	public Carrera actualizarCarrera(Carrera c);
 	public Optional<Carrera> getCarrera(Long id);
 	public List<Carrera> getCarrerasConEstudiantes();
 	public List<CarreraDTO> getReporteCarreras();
