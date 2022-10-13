@@ -1,8 +1,8 @@
 package Comparator;
 
-import java.util.Comparator;
-
 import DTO.CarreraDTO;
+
+import java.util.Comparator;
 
 public class ComparadorDTO implements Comparator<CarreraDTO> {
 

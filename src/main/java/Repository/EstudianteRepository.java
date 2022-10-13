@@ -1,15 +1,17 @@
 package Repository;
 
+import Model.Estudiante;
+import org.springframework.data.jpa.repository.JpaRepository;
+
 import java.util.List;
 
-import Model.Estudiante;
-
-public interface EstudianteRepository {
+public interface EstudianteRepository extends JpaRepository<Estudiante,Long> {
 	
-	public boolean saveEstudiante(Estudiante e); //dar de alta un estudiante
-	public boolean deleteEstudiante(int id);
+//	public boolean saveEstudiante(Estudiante e); //dar de alta un estudiante
+//	public boolean deleteEstudiante(int id);
+//	public List<Estudiante> getAllEstudiantes();
+
 	public boolean actualizarEstudiante(Estudiante e);
-	public List<Estudiante> getAllEstudiantes();
 	public Estudiante getEstudiantePorNroLibreta(int lu);
 	public List<Estudiante> getEstudiantesPorGenero(char genero);
 	public List<Estudiante> getEstudiantesOrdenadoPorApellidoYNombre();//criterio de ordenamiento

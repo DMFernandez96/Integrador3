@@ -1,31 +1,29 @@
 package Controller;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import Model.Carrera;
+import Model.Estudiante;
 import Model.Matriculacion;
 import Servicios.ServicioMatriculacion;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.*;
 
 @RestController
 @RequestMapping("/matriculaciones")
 public class MatriculacionController {
+	public MatriculacionController(@Qualifier("servicioMatriculacion") ServicioMatriculacion sm) {
+		this.sm = sm;
+	}
+	@Qualifier("servicioMatriculacion")
 	@Autowired
 	private ServicioMatriculacion sm;
 	
 	@PostMapping(value="/insertar")
-	public boolean insertarMatriculacion(@RequestBody Matriculacion m) {
-		return this.sm.insertarMatriculacion(m);
-	}
+	public void insertarMatriculacion(@RequestBody Matriculacion m) {this.sm.insertarMatriculacion(m);}
 	
 	@DeleteMapping(value = "/eliminar/{id}")
-	public boolean eliminarMatriculacion(@PathVariable int id) {
-		return this.sm.eliminarMatriculacion(id);
+	public void eliminarMatriculacion(@PathVariable Long id) {
+		this.sm.eliminarMatriculacion(id);
 	}
 	
 	@PutMapping(value="/actualizar" )
@@ -33,4 +31,10 @@ public class MatriculacionController {
 		return this.sm.actualizarMatriculacion(m);
 	}
 
+	public Matriculacion crearMatriculacion(Estudiante e, Carrera c, int anioEgreso , int anioIngreso){
+		Matriculacion mat = new Matriculacion(e,c,anioEgreso,anioIngreso);
+		e.agregarMatriculacion(mat);
+		c.agregarMatriculacion(mat);
+		return mat;
+	}
 }

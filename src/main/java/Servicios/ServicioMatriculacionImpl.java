@@ -1,34 +1,25 @@
 package Servicios;
 
+import Model.Matriculacion;
+import Repository.MatriculacionRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import Factory.FactoryEntityManager;
-import Model.Matriculacion;
-import Repository.MatriculacionRepositoryImpl;
 
 @Service
 public class ServicioMatriculacionImpl implements ServicioMatriculacion{
 	@Autowired
-	private MatriculacionRepositoryImpl mr;
-	@Autowired
-	private FactoryEntityManager fem;
+	private MatriculacionRepository mr;
+
 	
-	
-//	public ServicioMatriculacionImpl(FactoryEntityManager fem) {
-//		this.fem = fem;
-//		this.mr = new MatriculacionRepositoryImpl(fem.getEntityManger());
-//	}
+
 
 	@Override
-	public boolean insertarMatriculacion(Matriculacion m) {
-		return mr.saveMatriculacion(m);
+	public void insertarMatriculacion(Matriculacion m) {
+		 mr.save(m);
 	}
 
 	@Override
-	public boolean eliminarMatriculacion(int id) {
-		return mr.deleteMatriculacion(id);
-	}
+	public void eliminarMatriculacion(Long id) {mr.deleteById(id);}
 
 	@Override
 	public boolean actualizarMatriculacion(Matriculacion m) {

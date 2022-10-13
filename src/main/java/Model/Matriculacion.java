@@ -1,8 +1,5 @@
 package Model;
 
-import java.sql.Timestamp;
-import java.time.LocalDate;
-
 import javax.persistence.*;
 
 /**
@@ -20,7 +17,7 @@ public class Matriculacion {
 	 */
     @Id
     @GeneratedValue(strategy=GenerationType.AUTO)
-    private int idMatricula;
+    private Long idMatricula;
 
     /**
      * identificador del estudiante
@@ -125,7 +122,7 @@ public class Matriculacion {
 	 * Obtener id de la matricula
 	 * @return idmatricula
 	 */
-	public int getIdMatricula() {
+	public Long getIdMatricula() {
 		return idMatricula;
 	}
 	

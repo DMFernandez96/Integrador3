@@ -1,40 +1,34 @@
 package Servicios;
 
-import java.util.List;
-
+import Model.Estudiante;
+import Repository.EstudianteRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.stereotype.Service;
 
-import Factory.FactoryEntityManager;
-import Model.Estudiante;
-import Repository.EstudianteRepositoryImpl;
+import java.util.List;
 
 @Service
 public class ServicioEstudianteImpl implements ServicioEstudiante{
+
+	@Qualifier("estudianteReporsitory")
 	@Autowired
-	private EstudianteRepositoryImpl er;
-	@Autowired
-	private FactoryEntityManager fem;
-	
-//	public ServicioEstudianteImpl(FactoryEntityManager fem) {
-//		this.fem = fem;
-//		this.er = new EstudianteRepositoryImpl(this.fem.getEntityManger());
-//	};
-	
-	@Override
-	public boolean insertarEstudiante(Estudiante e) {
-		return er.saveEstudiante(e);
+	private EstudianteRepository er;
+
+	public ServicioEstudianteImpl(@Qualifier("estudianteReporsitory") EstudianteRepository er) {
+		this.er = er;
 	}
+
+	@Override
+	public void insertarEstudiante(Estudiante e) {er.save(e);}
 
 	@Override
 	public List<Estudiante> obtenerAllEstudiantes() {
-		return er.getAllEstudiantes();
+		return er.findAll();
 	}
 
 	@Override
-	public boolean eliminarEstudiante(int id) {
-		return er.deleteEstudiante(id);
-	}
+	public void eliminarEstudiante(Long id) {er.deleteById(id);}
 	
 	public boolean actualizarEstudiante(Estudiante e) {
 		return er.actualizarEstudiante(e);

@@ -1,44 +1,42 @@
 package Servicios;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import Comparator.ComparadorDTO;
 import DTO.CarreraDTO;
-import Factory.FactoryEntityManager;
 import Model.Carrera;
 import Model.Matriculacion;
-import Repository.CarreraRepositoryImpl;
+import Repository.CarreraRepository;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServicioCarreraImpl implements ServicioCarrera{
+
+	@Qualifier("carreraRepositoryImpl")
 	@Autowired
-	private CarreraRepositoryImpl cr;
-	@Autowired
-	private FactoryEntityManager fem;
+	private CarreraRepository cr;
+
 	
-//	public ServicioCarreraImpl(FactoryEntityManager fem) {
-//		this.fem = fem;
-//		this.cr = new CarreraRepositoryImpl(fem.getEntityManger());
-//	};
-//	
+	public ServicioCarreraImpl(@Qualifier("carreraRepositoryImpl") CarreraRepository cr) {
+	this.cr = cr;
+	};
+
 
 	@Override
-	public boolean insertarCarrera(Carrera c) {
-		return cr.saveCarrera(c);
-	}
+	public void insertarCarrera(Carrera c) {cr.save(c);}
 
 	@Override
 	public List<Carrera> listarCarreras() {
-		return cr.getAllCarreras();
+		return cr.findAll();
 	}
 
 	@Override
-	public boolean eliminarCarrera(int id) {
-		return cr.deleteCarrera(id);
+	public void eliminarCarrera(Long id) {
+		cr.deleteById(id);
 	}
 	
 	public boolean actualizarCarrera(Carrera c) {
@@ -51,8 +49,8 @@ public class ServicioCarreraImpl implements ServicioCarrera{
 	}
 
 	@Override
-	public Carrera getCarrera(int id) {
-		return cr.getCarrera(id);
+	public Optional<Carrera> getCarrera(Long id) {
+		return cr.findById(id);
 	}
 	
 	@Override

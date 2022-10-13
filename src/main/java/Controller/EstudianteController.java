@@ -1,52 +1,51 @@
 package Controller;
 
 
-import static java.lang.Integer.parseInt;
-
-import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Random;
-
+import Model.Carrera;
+import Model.Estudiante;
+import Model.Matriculacion;
+import Servicios.ServicioEstudiante;
 import org.apache.commons.csv.CSVFormat;
 import org.apache.commons.csv.CSVParser;
 import org.apache.commons.csv.CSVRecord;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.DeleteMapping;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.PutMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.web.bind.annotation.*;
 
-import Servicios.*;
-import Model.*;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.util.List;
+import java.util.Random;
+
+import static java.lang.Integer.parseInt;
+
 
 @RestController
 @RequestMapping("/estudiantes")
 public class EstudianteController {
-
+	public EstudianteController(@Qualifier("servicioEstudiante") ServicioEstudiante se,@Qualifier("carreraController") CarreraController cc,@Qualifier("matriculacionController") MatriculacionController mc) {
+		this.se = se;
+		this.cc = cc;
+		this.mc = mc;
+	}
+	@Qualifier("servicioEstudiante")
 	@Autowired
 	private ServicioEstudiante se;
+	@Qualifier("carreraController")
 	@Autowired
 	private CarreraController cc;
+	@Qualifier("matriculacionController")
 	@Autowired
 	private MatriculacionController mc;
 
 	@PostMapping(value= "/insertar")	
-	public boolean insertarEstudiante(@RequestBody Estudiante e) {
-		return this.se.insertarEstudiante(e);
+	public void insertarEstudiante(@RequestBody Estudiante e) {
+		this.se.insertarEstudiante(e);
 	}
 	
 	@DeleteMapping(value = "/eliminar/{id}")
-	public boolean eliminarEstudiante(int id) {
-		return this.se.eliminarEstudiante(id);
-	}
+	public void eliminarEstudiante(Long id) {this.se.eliminarEstudiante(id);}
 	
 	@PutMapping(value="/actualizar")
 	public boolean actualizarEstudiante(@RequestBody Estudiante e) {
@@ -74,18 +73,18 @@ public class EstudianteController {
 				anioRandomIngreso=generateRandomInt(2010, 2022);
 			}
 				
-			Matriculacion mat = new Matriculacion(e,c,anioRandomEgreso,anioRandomIngreso);
-			e.agregarMatriculacion(mat);
-			c.agregarMatriculacion(mat);
-			if(cc.actualizarCarrera(c) && this.insertarEstudiante(e)) {
+//			Matriculacion mat = new Matriculacion(e,c,anioRandomEgreso,anioRandomIngreso);
+			Matriculacion mat = mc.crearMatriculacion(e,c,anioRandomEgreso,anioRandomIngreso);
+
+//			if(cc.actualizarCarrera(c) && this.insertarEstudiante(e)) {
 				mc.insertarMatriculacion(mat);
-				return true;
-			}
+//				return true;
+//			}
 		}
 		return false;
 	}
-	
-	@RequestMapping(method = RequestMethod.GET,produces="application/json")
+
+	@RequestMapping("/")
 	public List<Estudiante> getAllEstudiantes(){
 		return this.se.obtenerAllEstudiantes();
 	}
@@ -120,16 +119,17 @@ public class EstudianteController {
 		}
 		return 'm';
 	}
-	
-	public void cargarDatos() {
-		List<Carrera> carreras = leerCarreras();
+
+	@PostMapping(value= "/cargar")
+	public void cargarEstudiantes() {
+		List<Carrera> carreras = cc.leerCarreras();
 		try {
 			@SuppressWarnings("deprecation")
 			CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/assets/estudiantes100.csv"));
 			System.out.println("Estoy cargando los estudiantes...");
 			for(CSVRecord row: parser) {
 				Estudiante tmp = new Estudiante(parseInt(row.get("dni")),parseInt(row.get("nrolibreta")),row.get("nombre"),row.get("apellido"),parseInt(row.get("edad")),generarGenero(),row.get("ciudad"));
-				altaEstudiante(tmp, carreras.get((int) (Math.random()*19+1)));
+				altaEstudiante(tmp, carreras.get((int) (Math.random()*20+1)));
 			}
 			System.out.println("No se me da nada mal");
 			
@@ -141,29 +141,5 @@ public class EstudianteController {
 			e.printStackTrace();
 		}
 	}
-	
-	private List<Carrera> leerCarreras(){
-		List<Carrera> car = new ArrayList<>();
-		try {
-			@SuppressWarnings("deprecation")
-			CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/assets/carreras20.csv"));
-			System.out.println("Estoy cargando las carreras...");
-			for(CSVRecord row: parser) {
-				Carrera tmp = new Carrera(row.get("nombre"),parseInt(row.get("duracion")));
-				car.add(tmp);
-			}
-			System.out.println("No se me da nada mal");
-			return car;
-			
-		} catch (FileNotFoundException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (IOException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return car;
-	}
-	
 
 }

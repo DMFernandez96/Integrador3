@@ -13,7 +13,7 @@ public class CarreraDTO{
 	/**
 	 * Identificador unico
 	 */
-	private int idCarrera;
+	private Long idCarrera;
 	
 	/**
 	 * Nombre de la carrera
@@ -43,7 +43,7 @@ public class CarreraDTO{
 	}
 		
 
-	public CarreraDTO(String nombreCarrera, int idCarrera, int anio, int cantInscriptos, int cantEgresados) {
+	public CarreraDTO(String nombreCarrera, Long idCarrera, int anio, int cantInscriptos, int cantEgresados) {
 
 		super();
 		this.idCarrera = idCarrera;
@@ -61,7 +61,7 @@ public class CarreraDTO{
 	 * Obtener el id de la carrera
 	 * @return idCarrera
 	 */
-	public int getIdCarrera() {
+	public Long getIdCarrera() {
 		return idCarrera;
 	}
 	
@@ -69,7 +69,7 @@ public class CarreraDTO{
 	 * Setear nuevo valor a idCarrera
 	 * @param idCarrera nuevo id para la carrera
 	 */
-	public void setIdCarrera(int idCarrera) {
+	public void setIdCarrera(Long idCarrera) {
 		this.idCarrera = idCarrera;
 	}
 	

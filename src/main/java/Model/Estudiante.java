@@ -19,7 +19,7 @@ public class Estudiante {
 	 */
     @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-    private int id_estudiante;
+    private Long id_estudiante;
 
     /**
      * Dni del estudiente
@@ -102,7 +102,7 @@ public class Estudiante {
 	 * Obtener identificador del estudiente
 	 * @return id_estudiante
 	 */
-	public int getId_estudiante() {
+	public Long getId_estudiante() {
 		return id_estudiante;
 	}
 	

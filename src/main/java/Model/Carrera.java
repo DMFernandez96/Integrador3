@@ -1,8 +1,8 @@
 package Model;
 
-import javax.persistence.*;
+import lombok.Data;
 
-import java.time.LocalDate;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -15,6 +15,7 @@ import java.util.List;
  */
 
 @Entity
+@Data
 public class Carrera {
 	
 	/**
@@ -22,7 +23,7 @@ public class Carrera {
 	 */
     @Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-    private int id_carrera;
+    private Long id_carrera;
 
     /**
      * Nombre de la carrera
@@ -90,7 +91,7 @@ public class Carrera {
 	 * Obtener identificador de la carrera
 	 * @return
 	 */
-	public int getId_carrera() {
+	public Long getId_carrera() {
 		return id_carrera;
 	}
 

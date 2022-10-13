@@ -1,17 +1,18 @@
 package Servicios;
 
-import java.util.List;
-
 import DTO.CarreraDTO;
 import Model.Carrera;
 
+import java.util.List;
+import java.util.Optional;
+
 public interface ServicioCarrera {
 
-	public boolean insertarCarrera(Carrera c);
+	public void insertarCarrera(Carrera c);
 	public List<Carrera> listarCarreras();
-	public boolean eliminarCarrera(int id);
+	public void eliminarCarrera(Long id);
 	public boolean actualizarCarrera(Carrera c);
-	public Carrera getCarrera(int id);
+	public Optional<Carrera> getCarrera(Long id);
 	public List<Carrera> getCarrerasConEstudiantes();
 	public List<CarreraDTO> getReporteCarreras();
 }
