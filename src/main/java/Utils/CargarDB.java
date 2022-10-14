@@ -4,6 +4,7 @@ import Controller.EstudianteController;
 import Model.Carrera;
 import Model.Estudiante;
 import Model.Matriculacion;
+import Repository.CarreraRepository;
 import Servicios.ServicioCarreraImpl;
 import Servicios.ServicioEstudiante;
 import Servicios.ServicioEstudianteImpl;
@@ -34,9 +35,9 @@ public class CargarDB {
 
 
     @Bean
-    CommandLineRunner initDatabase(@Qualifier("ServicioEstudianteImpl") ServicioEstudianteImpl svcEstudiante, @Qualifier("servicioCarreraImpl") ServicioMatriculacionImpl svcMatriculacion , ServicioCarreraImpl svcCarrera) {
+    CommandLineRunner initDatabase(@Qualifier("carreraRepositoryImpl") CarreraRepository cr) {
         return args -> {
-            log.info(cargarEstudiantes(svcEstudiante,svcMatriculacion,svcCarrera);
+            System.out.println("Cargue la carrera 1"+ cr.save(new Carrera("Tudai",5)));
         };
     }
 

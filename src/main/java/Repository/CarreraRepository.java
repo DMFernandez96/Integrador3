@@ -7,7 +7,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-@Repository
+
 public interface CarreraRepository extends JpaRepository<Carrera,Long> {
 	
 //	public boolean saveCarrera(Carrera c);

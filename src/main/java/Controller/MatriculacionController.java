@@ -11,10 +11,10 @@ import org.springframework.web.bind.annotation.*;
 @RestController
 @RequestMapping("/matriculaciones")
 public class MatriculacionController {
-	public MatriculacionController(@Qualifier("servicioMatriculacion") ServicioMatriculacion sm) {
+	public MatriculacionController(@Qualifier("ServicioMatriculacionImpl") ServicioMatriculacion sm) {
 		this.sm = sm;
 	}
-	@Qualifier("servicioMatriculacion")
+	@Qualifier("ServicioMatriculacionImpl")
 	@Autowired
 	private ServicioMatriculacion sm;
 	
