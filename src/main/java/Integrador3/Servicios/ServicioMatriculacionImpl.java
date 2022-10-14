@@ -48,11 +48,5 @@ public class ServicioMatriculacionImpl implements ServicioMatriculacion{
 				});
 	}
 
-	public Matriculacion crearMatriculacion(Estudiante e, Carrera c, int anioEgreso , int anioIngreso){
-		Matriculacion mat = new Matriculacion(e,c,anioEgreso,anioIngreso);
-		e.agregarMatriculacion(mat);
-		c.agregarMatriculacion(mat);
-		return mat;
-	}
 
 }

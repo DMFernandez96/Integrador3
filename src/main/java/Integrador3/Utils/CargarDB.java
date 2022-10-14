@@ -37,34 +37,36 @@ public class CargarDB {
 //            log.info("Cargue la carrera 1"+ cr.save(new Carrera("Tudai",5)));
 //            cargarEstudiantes(se,sm,sc);
             
-            Carrera c1 = new Carrera("TUDAI", 3);
-        	Carrera c2 = new Carrera("Contador", 5);
-        	Estudiante e1 = new Estudiante(123456,12345,"Harry", "Styles", 28, 'm', "Necochea" );
-        	Estudiante e2 = new Estudiante(654321,54321,"Alejandro", "Lerner", 60, 'm', "Tandil" );
+//            Carrera c1 = new Carrera("TUDAI", 3);
+//        	Carrera c2 = new Carrera("Contador", 5);
+//        	Estudiante e1 = new Estudiante(123456,12345,"Harry", "Styles", 28, 'm', "Necochea" );
+//        	Estudiante e2 = new Estudiante(654321,54321,"Alejandro", "Lerner", 60, 'm', "Tandil" );
 //        	Matriculacion m1 = new Matriculacion(e1,c1,2015,2010);
-            sc.insertarCarrera(c1);
-            sc.insertarCarrera(c2);
-            se.insertarEstudiante(e1);
-            se.insertarEstudiante(e2);
-            
+//            sc.insertarCarrera(c1);
+//            sc.insertarCarrera(c2);
+//            se.insertarEstudiante(e1);
+//            se.insertarEstudiante(e2);
+
             //revisar creacion de matriculaciones
-//          Matriculacion m1= sm.crearMatriculacion(e1,c1,2015,2010);   
+//          Matriculacion m1= sm.crearMatriculacion(e1,c1,2015,2010);
 //	       	sm.insertarMatriculacion(m1);
 //	       	e1.agregarMatriculacion(m1);
 //	       	c1.agregarMatriculacion(m1);
-            System.out.println(sc.listarCarreras());
+//            System.out.println(sc.listarCarreras());
+            this.cargarEstudiantes(se,sm,sc);
         };
     }
 
     public void cargarEstudiantes(ServicioEstudianteImpl svcEstudiante, ServicioMatriculacionImpl svcMatriculacion, ServicioCarreraImpl svcCarrera) {
         List<Carrera> carreras = leerCarreras();
+        svcCarrera.guardarCarreras(carreras);
         try {
             @SuppressWarnings("deprecation")
-            CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/main/java/com/example/demo/assets/estudiantes100.csv"));
+            CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/main/java/integrador3/assets/estudiantes100.csv"));
             System.out.println("Estoy cargando los estudiantes...");
             for(CSVRecord row: parser) {
                 Estudiante tmp = new Estudiante(parseInt(row.get("dni")),parseInt(row.get("nrolibreta")),row.get("nombre"),row.get("apellido"),parseInt(row.get("edad")),generarGenero(),row.get("ciudad"));
-                altaEstudiante(tmp, carreras.get((int) (Math.random()*20+1)),svcEstudiante,svcMatriculacion,svcCarrera);
+                altaEstudiante(tmp, carreras.get((int) (Math.random()*19+1)),svcEstudiante,svcMatriculacion,svcCarrera);
             }
             System.out.println("No se me da nada mal");
 
@@ -81,13 +83,11 @@ public class CargarDB {
         List<Carrera> car = new ArrayList<>();
         try {
             @SuppressWarnings("deprecation")
-            CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/main/java/com/example/demo/assets/carreras20.csv"));
-            System.out.println("Estoy cargando las carreras...");
+            CSVParser parser = CSVFormat.DEFAULT.withHeader().parse(new FileReader("./src/main/java/integrador3/assets/carreras20.csv"));
             for(CSVRecord row: parser) {
                 Carrera tmp = new Carrera(row.get("nombre"),parseInt(row.get("duracion")));
                 car.add(tmp);
             }
-            System.out.println("No se me da nada mal");
             return car;
 
         } catch (FileNotFoundException e) {
@@ -116,15 +116,17 @@ public class CargarDB {
                 anioRandomIngreso=generateRandomInt(2010, 2022);
             }
 
-//			Matriculacion mat = new Matriculacion(e,c,anioRandomEgreso,anioRandomIngreso);
-            Matriculacion mat = svcMatriculacion.crearMatriculacion(e,c,anioRandomEgreso,anioRandomIngreso);
+            Matriculacion mat = new Matriculacion(e,c,anioRandomEgreso,anioRandomIngreso);
 
-//			if(svcCarrera.actualizarCarrera(c) && svcEstudiante.insertarEstudiante(e)) {
-//            svcCarrera.actualizarCarrera(c);
+            e.agregarMatriculacion(mat);
+            c.agregarMatriculacion(mat);
+
+            svcCarrera.actualizarCarrera(c.getId_carrera(), c);
             svcEstudiante.insertarEstudiante(e);
             svcMatriculacion.insertarMatriculacion(mat);
-//				return true;
-//			}
+
+            return true;
+
         }
         return false;
     }

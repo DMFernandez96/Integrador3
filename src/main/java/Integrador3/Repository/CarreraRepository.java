@@ -15,8 +15,8 @@ public interface CarreraRepository extends JpaRepository<Carrera,Long> {
 //	public Carrera getCarrera(int id);
 //	@Query("SELECT c FROM Carrera c")
 //	public List<Carrera> getAllCarreras();
-
-//	public boolean actualizarCarrera(Carrera c);
+//
+// public boolean actualizarCarrera(Carrera c);
 
 	@Query("SELECT c FROM Carrera c "
 			+ "LEFT OUTER JOIN Matriculacion m ON c.id_carrera = m.carrera.id_carrera "

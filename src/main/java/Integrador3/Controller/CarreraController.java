@@ -45,16 +45,16 @@ public class CarreraController {
 	public Optional<Carrera> getCarrera(@PathVariable Long id) {
 		return this.sc.getCarrera(id);
 	}
-//	
-//	@GetMapping(value="/conEstudiantes")
-//	public List<Carrera> getCarrerasConEstudiantes(){
-//		return this.sc.getCarrerasConEstudiantes();
-//	}
-//	
-//	@GetMapping(value="/reporte")
-//	public List<CarreraDTO> getReporteCarreras(){
-//		return this.sc.getReporteCarreras();
-//	}
+
+	@GetMapping(value="/conEstudiantes")
+	public List<Carrera> getCarrerasConEstudiantes(){
+		return this.sc.getCarrerasConEstudiantes();
+	}
+
+	@GetMapping(value="/reporte")
+	public List<CarreraDTO> getReporteCarreras(){
+		return this.sc.getReporteCarreras();
+	}
 
 
 }

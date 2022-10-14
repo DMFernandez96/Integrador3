@@ -15,4 +15,6 @@ public interface ServicioCarrera {
 	public Optional<Carrera> getCarrera(Long id);
 	public List<Carrera> getCarrerasConEstudiantes();
 	public List<CarreraDTO> getReporteCarreras();
+
+	public void guardarCarreras(List<Carrera> carreras);
 }
