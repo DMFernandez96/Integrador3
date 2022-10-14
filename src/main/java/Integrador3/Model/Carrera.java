@@ -3,6 +3,7 @@ package Integrador3.Model;
 import lombok.Data;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -40,7 +41,7 @@ public class Carrera {
     /**
      * Lista de matriculaciones de la carrera
      */
-    @OneToMany(mappedBy = "carrera",fetch = FetchType.LAZY)
+    @OneToMany(mappedBy = "carrera",fetch = FetchType.EAGER) //cambio temporal por error
     private List<Matriculacion> matriculaciones;
     
     
@@ -127,6 +128,10 @@ public class Carrera {
 	public String toString() {
 		return "Carrera [id_carrera=" + id_carrera + ", nombre=" + nombre + ", duracion=" + duracion + ", matriculaciones=" + matriculaciones.size()
 				+ "]";
+	}
+	
+	public void setMatriculaciones(List<Matriculacion> matriculaciones2) {
+		this.matriculaciones = matriculaciones2;		
 	}
 
 }

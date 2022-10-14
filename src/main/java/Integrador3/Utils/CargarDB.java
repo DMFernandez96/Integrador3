@@ -32,10 +32,27 @@ import static java.lang.Integer.parseInt;
 public class CargarDB {
 
     @Bean
-    CommandLineRunner initDatabase(@Qualifier("carreraRepository") CarreraRepository cr) {
+    CommandLineRunner initDatabase(ServicioCarreraImpl sc, ServicioEstudianteImpl se, ServicioMatriculacionImpl sm ) {
         return args -> {
-            log.info("Cargue la carrera 1"+ cr.save(new Carrera("Tudai",5)));
+//            log.info("Cargue la carrera 1"+ cr.save(new Carrera("Tudai",5)));
 //            cargarEstudiantes(se,sm,sc);
+            
+            Carrera c1 = new Carrera("TUDAI", 3);
+        	Carrera c2 = new Carrera("Contador", 5);
+        	Estudiante e1 = new Estudiante(123456,12345,"Harry", "Styles", 28, 'm', "Necochea" );
+        	Estudiante e2 = new Estudiante(654321,54321,"Alejandro", "Lerner", 60, 'm', "Tandil" );
+//        	Matriculacion m1 = new Matriculacion(e1,c1,2015,2010);
+            sc.insertarCarrera(c1);
+            sc.insertarCarrera(c2);
+            se.insertarEstudiante(e1);
+            se.insertarEstudiante(e2);
+            
+            //revisar creacion de matriculaciones
+//          Matriculacion m1= sm.crearMatriculacion(e1,c1,2015,2010);   
+//	       	sm.insertarMatriculacion(m1);
+//	       	e1.agregarMatriculacion(m1);
+//	       	c1.agregarMatriculacion(m1);
+            System.out.println(sc.listarCarreras());
         };
     }
 

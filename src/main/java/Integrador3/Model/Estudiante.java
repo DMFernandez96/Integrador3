@@ -3,6 +3,7 @@ package Integrador3.Model;
 import lombok.Data;
 
 import javax.persistence.*;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -253,6 +254,9 @@ public class Estudiante {
 		return null;
 	}
 	
+	public void setMatriculaciones(List<Matriculacion> matriculaciones2) {
+		this.matriculaciones = matriculaciones2;		
+	}
 	
 
 }

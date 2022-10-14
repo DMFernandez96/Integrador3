@@ -29,18 +29,19 @@ public class ServicioCarreraImpl implements ServicioCarrera {
 		cr.deleteById(id);
 	}
 
-//	public Carrera actualizarCarrera(Carrera newCarrera) {
-//			return cr.findById(newCarrera.getId_carrera())
-//					.map(oldCarrera -> {
-//						oldCarrera.setNombre(newCarrera.getNombre());
-//						oldCarrera.setDuracion(newCarrera.getDuracion());
-//						oldCarrera.setMatriculaciones(newCarrera.getMatriculaciones());
-//						return cr.save(oldCarrera);
-//					})
-//					.orElseGet(() -> {
-//						return cr.save(newCarrera);
-//					});
-//	}
+	@Override
+	public Carrera actualizarCarrera(Long id, Carrera newCarrera) {
+			return cr.findById(id)
+					.map(oldCarrera -> {
+						oldCarrera.setNombre(newCarrera.getNombre());
+						oldCarrera.setDuracion(newCarrera.getDuracion());
+						oldCarrera.setMatriculaciones(newCarrera.getMatriculaciones());
+						return cr.save(oldCarrera);
+					})
+					.orElseGet(() -> {
+						return cr.save(newCarrera);
+					});
+	}
 
 	@Override
 	public List<Carrera> getCarrerasConEstudiantes() {

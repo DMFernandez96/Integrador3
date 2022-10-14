@@ -28,9 +28,24 @@ public class ServicioEstudianteImpl implements ServicioEstudiante{
 	@Override
 	public void eliminarEstudiante(Long id) {er.deleteById(id);}
 	
-//	public boolean actualizarEstudiante(Estudiante e) {
-//		return er.actualizarEstudiante(e);
-//	}
+	@Override
+	public Estudiante actualizarEstudiante(Long id, Estudiante newEstudiante) {
+		return er.findById(id)
+				.map(oldEstudiante -> {
+					oldEstudiante.setDni(newEstudiante.getDni());
+					oldEstudiante.setNombre(newEstudiante.getNombre());
+					oldEstudiante.setApellido(newEstudiante.getApellido());
+					oldEstudiante.setEdad(newEstudiante.getEdad());
+					oldEstudiante.setCiudad(newEstudiante.getCiudad());
+					oldEstudiante.setGenero(newEstudiante.getGenero());
+					oldEstudiante.setMatriculaciones(newEstudiante.getMatriculaciones());
+					return er.save(oldEstudiante);
+				})
+				.orElseGet(() -> {
+					return er.save(newEstudiante);
+				});
+	}
+	
 	@Override
 	public List<Estudiante> getEstudiantesPorGenero(char genero) {
 		return er.getEstudiantesPorGenero(genero);

@@ -1,7 +1,5 @@
 package Integrador3.Controller;
 
-
-
 import Integrador3.Model.Estudiante;
 import Integrador3.Servicios.ServicioEstudianteImpl;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -10,19 +8,16 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-
 @RestController
 @RequestMapping("/estudiantes")
 public class EstudianteController {
 
-
-	@Qualifier("servicioEstudianteImpl")
-	@Autowired
-	private ServicioEstudianteImpl se;
-
-	public EstudianteController(@Qualifier("servicioEstudianteImpl") ServicioEstudianteImpl se) {
+	public EstudianteController(ServicioEstudianteImpl se) {
 		this.se = se;
 	}
+
+	@Autowired
+	private ServicioEstudianteImpl se;
 
 	@PostMapping(value= "/insertar")	
 	public void insertarEstudiante(@RequestBody Estudiante e) {
@@ -30,30 +25,28 @@ public class EstudianteController {
 	}
 	
 	@DeleteMapping(value = "/eliminar/{id}")
-	public void eliminarEstudiante(Long id) {this.se.eliminarEstudiante(id);}
+	public void eliminarEstudiante(@PathVariable Long id) {this.se.eliminarEstudiante(id);}
 	
-//	@PutMapping(value="/actualizar")
-//	public boolean actualizarEstudiante(@RequestBody Estudiante e) {
-//		return this.se.actualizarEstudiante(e);
-//	};
+	@PutMapping(value="/actualizar/{id}")
+	public boolean actualizarEstudiante(@PathVariable Long id, @RequestBody Estudiante e) {
+		this.se.actualizarEstudiante(id, e);
+		return true;
+	};
 	
-
-	
-	@PostMapping(value="/altaEstudiante")
-
+//	@PostMapping(value="/altaEstudiante")
 
 	@RequestMapping("/")
 	public List<Estudiante> getAllEstudiantes(){
 		return this.se.obtenerAllEstudiantes();
 	}
 	
-	@GetMapping(value= "/{genero}")
+	@GetMapping(value= "/genero/{genero}")
 	public List<Estudiante> getEstudiantesPorGenero(@PathVariable char genero){
 		return this.se.getEstudiantesPorGenero(genero);
 	}
 	
-	@GetMapping(value= "/{lu}")
-	public Estudiante getEstudianteLibreta(@PathVariable("lu") int nroLibreta) {
+	@GetMapping(value= "/libreta/{nroLibreta}")
+	public Estudiante getEstudianteLibreta(@PathVariable int nroLibreta) {
 		return this.se.getEstudiantePorNroLibreta(nroLibreta);
 	}
 	
@@ -62,10 +55,8 @@ public class EstudianteController {
 		return this.se.getEstudiantesOrdenadoPorApellidoYNombre();
 	}
 	
-	@GetMapping(value= "/{carrera}/{ciudad}")
-	public List<Estudiante> getEstudiantePorCiudad(@PathVariable String carrera,@PathVariable String ciudad){
-		return this.se.getEstudiantesPorCiudad(carrera, ciudad);
-	}
-
-
+//	@GetMapping(value= "/{carrera}/{ciudad}")
+//	public List<Estudiante> getEstudiantePorCiudad(@PathVariable String carrera,@PathVariable String ciudad){
+//		return this.se.getEstudiantesPorCiudad(carrera, ciudad);
+//	}
 }
