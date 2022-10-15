@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -42,6 +44,7 @@ public class Carrera {
      * Lista de matriculaciones de la carrera
      */
     @OneToMany(mappedBy = "carrera",fetch = FetchType.EAGER) //cambio temporal por error
+    @JsonIgnoreProperties(value="carrera")
     private List<Matriculacion> matriculaciones;
     
     

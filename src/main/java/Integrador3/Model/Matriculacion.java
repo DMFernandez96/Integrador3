@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 /**
  * 
  * @author Grupo1
@@ -27,6 +29,7 @@ public class Matriculacion {
      */
     @ManyToOne
     @JoinColumn(name = "id_estudiante") //FK
+    @JsonIgnore
     private Estudiante estudiante;
 
     /**
@@ -34,6 +37,7 @@ public class Matriculacion {
      */
     @ManyToOne
     @JoinColumn(name = "id_carrera") //FK
+    @JsonIgnore
     private Carrera carrera;
     
     /**

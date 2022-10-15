@@ -4,6 +4,8 @@ import lombok.Data;
 
 import javax.persistence.*;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +75,7 @@ public class Estudiante {
      * Lista de matriculaciones del estudiante
      */
     @OneToMany (mappedBy = "estudiante",fetch = FetchType.LAZY)
+    @JsonIgnoreProperties(value="estudiante")
     private List<Matriculacion> matriculaciones;
 
     /**
