@@ -25,6 +25,11 @@ public class CarreraController {
 	@PostMapping(value="/insertar" )
 	public void insertarCarrera(@RequestBody Carrera c) {this.sc.insertarCarrera(c);}
 
+
+	public void guardarCarreras(@RequestBody List<Carrera> carreras){
+		this.sc.guardarCarreras(carreras);
+	}
+
 	@PutMapping(value="/actualizar/{id}")
 	public boolean actualizarCarrera(@PathVariable Long id, @RequestBody Carrera c) {
 		this.sc.actualizarCarrera(id, c);

@@ -6,6 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ServicioEstudianteImpl implements ServicioEstudiante{
@@ -30,20 +31,22 @@ public class ServicioEstudianteImpl implements ServicioEstudiante{
 	
 	@Override
 	public Estudiante actualizarEstudiante(Long id, Estudiante newEstudiante) {
-		return er.findById(id)
-				.map(oldEstudiante -> {
-					oldEstudiante.setDni(newEstudiante.getDni());
-					oldEstudiante.setNombre(newEstudiante.getNombre());
-					oldEstudiante.setApellido(newEstudiante.getApellido());
-					oldEstudiante.setEdad(newEstudiante.getEdad());
-					oldEstudiante.setCiudad(newEstudiante.getCiudad());
-					oldEstudiante.setGenero(newEstudiante.getGenero());
-					oldEstudiante.setMatriculaciones(newEstudiante.getMatriculaciones());
-					return er.save(oldEstudiante);
-				})
-				.orElseGet(() -> {
-					return er.save(newEstudiante);
-				});
+		if(id!=null)
+			return er.findById(id)
+					.map(oldEstudiante -> {
+						oldEstudiante.setDni(newEstudiante.getDni());
+						oldEstudiante.setNombre(newEstudiante.getNombre());
+						oldEstudiante.setApellido(newEstudiante.getApellido());
+						oldEstudiante.setEdad(newEstudiante.getEdad());
+						oldEstudiante.setCiudad(newEstudiante.getCiudad());
+						oldEstudiante.setGenero(newEstudiante.getGenero());
+						oldEstudiante.setMatriculaciones(newEstudiante.getMatriculaciones());
+						return er.save(oldEstudiante);
+					})
+					.orElseGet(() -> {
+						return er.save(newEstudiante);
+					});
+		return null;
 	}
 	
 	@Override

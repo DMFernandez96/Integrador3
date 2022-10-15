@@ -29,7 +29,7 @@ public class Matriculacion {
      */
     @ManyToOne
     @JoinColumn(name = "id_estudiante") //FK
-    @JsonIgnore
+	@JsonIgnore
     private Estudiante estudiante;
 
     /**
@@ -37,7 +37,7 @@ public class Matriculacion {
      */
     @ManyToOne
     @JoinColumn(name = "id_carrera") //FK
-    @JsonIgnore
+	@JsonIgnore
     private Carrera carrera;
     
     /**
@@ -88,10 +88,12 @@ public class Matriculacion {
 	/**
 	 * Obtener nombre de la carrera
 	 * @return nombrecarrera
+	 *
+	 * public String getNombreCarrera() {
+	 * 		return this.carrera.getNombre();
+	 *        }
 	 */
-	public String getNombreCarrera() {
-		return this.carrera.getNombre();
-	}
+
 
 	/**
 	 * Obtener carrera 

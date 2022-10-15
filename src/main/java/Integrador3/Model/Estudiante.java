@@ -1,5 +1,6 @@
 package Integrador3.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -75,7 +76,7 @@ public class Estudiante {
      * Lista de matriculaciones del estudiante
      */
     @OneToMany (mappedBy = "estudiante",fetch = FetchType.LAZY)
-    @JsonIgnoreProperties(value="estudiante")
+	@JsonIgnore
     private List<Matriculacion> matriculaciones;
 
     /**
@@ -251,7 +252,7 @@ public class Estudiante {
 	private String getCarrera() {
 		if(matriculaciones.size() > 0) {
 			for(Matriculacion m: matriculaciones) {
-				return m.getNombreCarrera();
+				return m.getCarrera().getNombre();
 			}
 		}
 		return null;

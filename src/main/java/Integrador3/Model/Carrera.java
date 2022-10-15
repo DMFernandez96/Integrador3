@@ -1,5 +1,6 @@
 package Integrador3.Model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
@@ -44,7 +45,7 @@ public class Carrera {
      * Lista de matriculaciones de la carrera
      */
     @OneToMany(mappedBy = "carrera",fetch = FetchType.EAGER) //cambio temporal por error
-    @JsonIgnoreProperties(value="carrera")
+    @JsonIgnore
     private List<Matriculacion> matriculaciones;
     
     
