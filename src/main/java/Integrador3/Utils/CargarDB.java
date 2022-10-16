@@ -45,7 +45,7 @@ public class CargarDB {
             System.out.println("Lista de carreras cargadas.");
             for(CSVRecord row: parser) {
                 Estudiante tmp = new Estudiante(parseInt(row.get("dni")),parseInt(row.get("nrolibreta")),row.get("nombre"),row.get("apellido"),parseInt(row.get("edad")),generarGenero(),row.get("ciudad"));
-                ctrlMatriculacion.crearMatriculacion(carreras.get((int) (Math.random()*19+1)), tmp);
+                ctrlMatriculacion.crearMatriculacion(carreras.get((int) (Math.random()*19+1)).getId_carrera(), tmp);
             }
             System.out.println("Estudiantes enlazados.");
         } catch (FileNotFoundException e) {

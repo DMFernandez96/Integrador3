@@ -18,7 +18,6 @@ public class ServicioCarreraImpl implements ServicioCarrera {
 	@Autowired
 	private CarreraRepository cr;
 
-
 	public void guardarCarreras(List<Carrera> carreras){
 		cr.saveAll(carreras);
 	}

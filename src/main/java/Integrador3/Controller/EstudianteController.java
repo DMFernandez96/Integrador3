@@ -1,11 +1,8 @@
 package Integrador3.Controller;
 
 import Integrador3.Model.Estudiante;
-import Integrador3.Servicios.ServicioCarreraImpl;
 import Integrador3.Servicios.ServicioEstudianteImpl;
-import Integrador3.Servicios.ServicioMatriculacionImpl;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.beans.factory.annotation.Qualifier;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -33,9 +30,7 @@ public class EstudianteController {
 	public boolean actualizarEstudiante(@PathVariable Long id, @RequestBody Estudiante e) {
 		this.svcEstudiante.actualizarEstudiante(id, e);
 		return true;
-	};
-	
-//	@PostMapping(value="/altaEstudiante")
+	}
 
 	@RequestMapping("/")
 	public List<Estudiante> getAllEstudiantes(){
@@ -57,8 +52,8 @@ public class EstudianteController {
 		return this.svcEstudiante.getEstudiantesOrdenadoPorApellidoYNombre();
 	}
 	
-//	@GetMapping(value= "/{carrera}/{ciudad}")
-//	public List<Estudiante> getEstudiantePorCiudad(@PathVariable String carrera,@PathVariable String ciudad){
-//		return this.se.getEstudiantesPorCiudad(carrera, ciudad);
-//	}
+	@GetMapping(value= "/{carrera}/{ciudad}")
+	public List<Estudiante> getEstudiantePorCiudad(@PathVariable String carrera,@PathVariable String ciudad){
+		return this.svcEstudiante.getEstudiantesPorCiudad(carrera, ciudad);
+	}
 }

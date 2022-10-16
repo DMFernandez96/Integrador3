@@ -1,11 +1,8 @@
 package Integrador3.Model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
 import javax.persistence.*;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -76,7 +73,7 @@ public class Estudiante {
      * Lista de matriculaciones del estudiante
      */
     @OneToMany (mappedBy = "estudiante",fetch = FetchType.LAZY)
-	@JsonIgnore
+	
     private List<Matriculacion> matriculaciones;
 
     /**

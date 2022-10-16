@@ -15,8 +15,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class ServicioMatriculacionImpl implements ServicioMatriculacion{
 
-
-
 	public ServicioMatriculacionImpl(ServicioEstudianteImpl svcEstudiante, MatriculacionRepository repository, ServicioCarreraImpl svcCarrera) {
 		this.repository = repository;
 		this.svcCarrera = svcCarrera;
@@ -61,9 +59,10 @@ public class ServicioMatriculacionImpl implements ServicioMatriculacion{
 	public Optional<Matriculacion> obtenerMatriculacionId(Long id){
 		return repository.findById(id);
 	}
-
-
-	public Optional<Matriculacion> crearMatriculacion(Carrera c, Estudiante e) {
+	
+	@Override
+	public Optional<Matriculacion> crearMatriculacion(Long idCarrera, Estudiante e) {
+		Carrera c= svcCarrera.getCarrera(idCarrera).get();
 		Matriculacion mat = null;
 		if(e != null && c != null) {
 			Random random = new Random();

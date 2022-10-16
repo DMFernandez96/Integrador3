@@ -1,0 +1,310 @@
+{
+	"info": {
+		"_postman_id": "111d6e87-c47c-41c1-85d0-2550717bcaad",
+		"name": "Integrador3_Requests_Grupo1",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Obtener todas las carreras",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carreras/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carreras",
+						""
+					]
+				},
+				"description": "Devuelve todas las carreras"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todos los estudiantes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estudiantes/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estudiantes",
+						""
+					]
+				},
+				"description": "Devuelve todos los estudiantes"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener todas las matriculaciones",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/matriculaciones/",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matriculaciones",
+						""
+					]
+				},
+				"description": "Muestra todas las matriculaciones"
+			},
+			"response": []
+		},
+		{
+			"name": "Dar de alta un nuevo estudiante",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"dni\": 39290709,\r\n    \"nrolibreta\": 1,\r\n    \"nombre\": \"Fulanito\",\r\n    \"apellido\": \"Detal\",\r\n    \"edad\": 45,\r\n    \"genero\": \"m\",\r\n    \"ciudad\": \"Bokhan\"\r\n\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/estudiantes/insertar",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estudiantes",
+						"insertar"
+					]
+				},
+				"description": "Agrega un nuevo estudiante"
+			},
+			"response": []
+		},
+		{
+			"name": "Matricular estudiante a una carrera",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id_estudiante\": 21,\r\n    \"dni\": 15033773,\r\n    \"nrolibreta\": 793897,\r\n    \"nombre\": \"Witty\",\r\n    \"apellido\": \"Jorn\",\r\n    \"edad\": 61,\r\n    \"genero\": \"m\",\r\n    \"ciudad\": \"Bokhan\",\r\n    \"matriculaciones\": []\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://localhost:8080/matriculaciones/crearMatriculacion/9",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"matriculaciones",
+						"crearMatriculacion",
+						"9"
+					]
+				},
+				"description": "Matricula un estudiante en una determinada carrera.\r\nEn este caso matricula al estudiante en la carrera Nurse cuyo Id = 9."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener estudiantes ordenados (por apellido y nombre)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estudiantes/ordenados",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estudiantes",
+						"ordenados"
+					]
+				},
+				"description": "Obtiene todos los estudiantes ordenados segun su apellido y nombre de forma ascendente."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener estudiante por numero de Libreta",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estudiantes/libreta/732612",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estudiantes",
+						"libreta",
+						"732612"
+					]
+				},
+				"description": "Muestra el estudiante con el numero de libreta pasada en el endpoint."
+			},
+			"response": [
+				{
+					"name": "Obtener estudiante por numero de Libreta",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/estudiantes/libreta/732612",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"estudiantes",
+								"libreta",
+								"732612"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Date",
+							"value": "Sun, 16 Oct 2022 00:58:23 GMT"
+						},
+						{
+							"key": "Keep-Alive",
+							"value": "timeout=60"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id_estudiante\": 23,\n    \"dni\": 17485450,\n    \"nrolibreta\": 732612,\n    \"nombre\": \"Hobard\",\n    \"apellido\": \"Bimson\",\n    \"edad\": 40,\n    \"genero\": \"f\",\n    \"ciudad\": \"Umeå\"\n}"
+				}
+			]
+		},
+		{
+			"name": "Obtener estudiantes por genero",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estudiantes/genero/m",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estudiantes",
+						"genero",
+						"m"
+					]
+				},
+				"description": "Obtiene todos los estudiantes de un determinado genero."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener carreras con estudiantes",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carreras/conEstudiantes",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carreras",
+						"conEstudiantes"
+					]
+				},
+				"description": "Trae todas las carreras que tengan al menos 1 estudiante"
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener estudiantes por carrera y ciudad",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/estudiantes/Nurse/Bokhan",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"estudiantes",
+						"Nurse",
+						"Bokhan"
+					]
+				},
+				"description": "Muestra los estudiantes filtrados por carrera y nombre de ciudad."
+			},
+			"response": []
+		},
+		{
+			"name": "Obtener Reporte carrera (DTO)",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/carreras/reporte",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"carreras",
+						"reporte"
+					]
+				},
+				"description": "Devuelve el reporte de las carreras. DTO"
+			},
+			"response": []
+		}
+	]
+}
